@@ -28,7 +28,7 @@ include("header.php");
 			</div>
 		</div>
 		<p class="pull-right" style="margin-top:-10px;margin-bottom:10px;">
-			<a target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo urlencode($Tweet->text)?>" class="btn btn-primary">Tweet</a>
+			<a target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo urlencode($Tweet->text)?>" class="btn btn-primary">Tweet Now!</a>
 		</p>
 		<div class="clearfix"></div>
 	<?php endforeach;?>
