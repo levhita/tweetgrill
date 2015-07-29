@@ -45,6 +45,12 @@ $(document).ready(function(){
 		}
 
 	});
+	
+	$('#tweets').delegate('button.tweet', 'click', function(){
+		var form = $(this).closest('form');
+		var text = $(form).find('textarea[name="text"]').val();
+		window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text), '_blank');
+	});
 
 	$('#tweets').delegate('textarea', 'keyup', function(){
 		update_counter(this);
@@ -70,7 +76,7 @@ $(document).ready(function(){
 			if(typeof response.error !== 'undefined'){
 				alert(response.error);
 			} else {
-				$("#name").html(response.name.substring(0, 26));
+				$("#name").html(response.name.substring(0, 22));
 			}
 		});
 	});
@@ -113,6 +119,7 @@ $(document).ready(function(){
 				new_tweet += '		<p class="pull-right">';
 				new_tweet += '			<span class="counter text-muted">140</span> &nbsp;';
 				new_tweet += '			<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
+				new_tweet += '			<button type="button" class="tweet btn btn-default">Tweet</button>';
 				new_tweet += '			<button type="button" class="update btn btn-primary">Update</button>';
 				new_tweet += '		</p>';
 				new_tweet += '		<input type="hidden" name="grill" value="'+tweet.unique_id+'"/>';

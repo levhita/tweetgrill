@@ -45,7 +45,9 @@ include("header.php");
 					<p class="pull-right">
 						<span class="counter text-muted">140</span> &nbsp;
 						<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+						<button type="button" class="tweet btn btn-default">Tweet</button>
 						<button type="button" class="update btn btn-primary">Update</button>
+
 					</p>
 					<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
 					<input type="hidden" name="secret" value="<?php echo $Grill->secret;?>"/>
@@ -60,11 +62,11 @@ include("header.php");
 	<div class="col-sm-12">
 		<form id="new_tweet">
 			<div class="form-group">
-				<label for="tweet">New Tweet:</label>
-				<p><textarea name="text" class="form-control" rows="2" placeholder="Example Tweet"></textarea></p>
+				<label for="tweet">Create a new Tweet:</label>
+				<p><textarea name="text" class="form-control" rows="2" placeholder="Follow @levhita for some awesome updates #FF"></textarea></p>
 				<p class="pull-right">
 				<span class="counter text-muted">140</span> &nbsp;
-				<button type="button" class="add btn btn-primary">Add New</button>
+				<button type="button" class="add btn btn-primary">Save</button>
 				</p>
 				<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
 				<input type="hidden" name="secret" value="<?php echo $Grill->secret;?>"/>
