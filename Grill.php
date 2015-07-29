@@ -60,6 +60,17 @@ class Grill {
 	}
 
 	/** @todo add error detection **/
+	public function update_name($name) {
+		global $Db;
+		$query = $Db->prepare("UPDATE grill SET name=:name WHERE id_grill=:id_grill");
+		$query->execute(array(
+			':name' 	=> $name,
+			':id_grill'	=> $this->id_grill,
+		));
+		return true;
+	}
+
+	/** @todo add error detection **/
 	public function add_tweet($text) {
 		global $Db;
 		$query = $Db->prepare("INSERT INTO tweet(text, id_grill) VALUES(:text, :id_grill)");
