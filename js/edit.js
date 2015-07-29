@@ -117,7 +117,7 @@ $(document).ready(function(){
 				new_tweet += '	<div class="form-group">';
 				new_tweet += '		<p><textarea name="text" class="form-control" rows="2">'+tweet.text+'</textarea></p>';
 				new_tweet += '		<p class="pull-right">';
-				new_tweet += '			<span class="counter text-muted">140</span> &nbsp;';
+				new_tweet += '			<span class="counter text-muted">140</span>&nbsp;';
 				new_tweet += '			<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
 				new_tweet += '			<button type="button" class="tweet btn btn-default">Tweet</button>';
 				new_tweet += '			<button type="button" class="update btn btn-primary">Update</button>';

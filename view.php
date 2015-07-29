@@ -14,16 +14,19 @@ try {
 	die();
 } 
 
+$scripts[] = "js/view.js";
+$scripts[] = "js/twitter-text-1.12.0.min.js";
+
 include("header.php");
 
 ?>
 
-<h1><?php echo htmlspecialchars($Grill->name)?></h1>
+<h2><?php echo htmlspecialchars($Grill->name)?></h2>
 
 <div id="tweets">
 	<?php foreach($Grill->tweets as $Tweet): ?>
 		<div class="panel panel-default">
-			<div class="panel-body">
+			<div class="tweet panel-body">
 				<?php echo htmlspecialchars($Tweet->text)?>
 			</div>
 		</div>

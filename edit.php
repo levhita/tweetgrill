@@ -43,7 +43,7 @@ include("header.php");
 				<div class="form-group">
 					<p><textarea name="text" class="form-control" rows="2"><?php echo htmlspecialchars($Tweet->text)?></textarea></p>
 					<p class="pull-right">
-						<span class="counter text-muted">140</span> &nbsp;
+						<span class="counter text-muted">140</span>&nbsp;
 						<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 						<button type="button" class="tweet btn btn-default">Tweet</button>
 						<button type="button" class="update btn btn-primary">Update</button>
@@ -65,7 +65,7 @@ include("header.php");
 				<label for="tweet">Create a new Tweet:</label>
 				<p><textarea name="text" class="form-control" rows="2" placeholder="Follow @levhita for some awesome updates #FF"></textarea></p>
 				<p class="pull-right">
-				<span class="counter text-muted">140</span> &nbsp;
+				<span class="counter text-muted">140</span>&nbsp;
 				<button type="button" class="add btn btn-primary">Save</button>
 				</p>
 				<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
