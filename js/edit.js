@@ -104,4 +104,14 @@ $(document).ready(function(){
 		});
 	});
 
+	$('#delete_grill').on('click', function(){
+		if (confirm("Are you sure?")) {
+			var form = $("#grill_form");
+			var grill 	= $(form).find('input[name="grill"]').val();
+			var secret = $(form).find('input[name="secret"]').val();
+			window.location = 'delete_grill.php?grill='+grill+'&secret='+secret;
+		}
+		
+	});
+
 });

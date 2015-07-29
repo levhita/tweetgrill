@@ -26,6 +26,7 @@ include("header.php");
 
 <h1><span id="name"><?php echo htmlspecialchars($Grill->name)?></span>
 	<div class="pull-right">
+		<button id="delete_grill" type="button" class="btn btn-danger">Delete</button>
 		<button id="edit_name" type="button" class="btn btn-default">Edit Name</button>
 		<a href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link</a>
 	</div>

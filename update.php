@@ -4,6 +4,7 @@ require_once("Grill.php");
 
 if ( !isset($_POST['text'])|| !isset($_POST['grill']) || !isset($_POST['secret']) || !isset($_POST['id_tweet']) || empty($_POST['text'])||empty($_POST['grill']) || empty($_POST['secret']) || empty($_POST['id_tweet']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));
+	die();
 }
 
 try {

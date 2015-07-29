@@ -86,12 +86,26 @@ class Grill {
 		);
 		return $Tweet;
 	}
+	
 	/** @todo add error detection **/
 	public function delete_tweet($id_tweet) {
 		global $Db;
 		$query = $Db->prepare("DELETE FROM tweet WHERE id_tweet=:id_tweet AND id_grill=:id_grill");
 		$query->execute(array(
 			':id_tweet' => $id_tweet,
+			':id_grill'	=> $this->id_grill
+		));
+		return true;
+	}
+
+	/** @todo add error detection **/
+	public function delete() {
+		global $Db;
+		foreach($this->tweets as $tweet){
+			$this->delete_tweet($tweet->id_tweet);
+		}
+		$query = $Db->prepare("DELETE FROM grill WHERE id_grill=:id_grill");
+		$query->execute(array(
 			':id_grill'	=> $this->id_grill
 		));
 		return true;
