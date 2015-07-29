@@ -59,6 +59,23 @@ class Grill {
 		return true;
 	}
 
+	/** @todo add error detection **/
+	public function add_tweet($text) {
+		global $Db;
+		$query = $Db->prepare("INSERT INTO tweet(text, id_grill) VALUES(:text, :id_grill)");
+		$query->execute(array(
+			':text' 	=> $text,
+			':id_grill'	=> $this->id_grill,
+		));
+		$Tweet = (object) array(
+			'id_tweet' => $Db->lastInsertId(),
+			'text' => $text,
+			'unique_id' => $this->unique_id,
+			'secret' => $this->secret,
+		);
+		return $Tweet;
+	}
+	/** @todo add error detection **/
 	public function delete_tweet($id_tweet) {
 		global $Db;
 		$query = $Db->prepare("DELETE FROM tweet WHERE id_tweet=:id_tweet AND id_grill=:id_grill");

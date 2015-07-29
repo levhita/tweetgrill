@@ -50,9 +50,9 @@ include("header.php");
 <form id="new_tweet">
 	<div class="form-group">
 		<label for="tweet">New Tweet:</label>
-		<p><textarea name="tweet" class="form-control" rows="3" placeholder="Example Tweet"></textarea></p>
-		<p class="pull-right"><button type="button" class="btn btn-primary">Add New</button></p>
-		<input type="hidden" name="id_grill" value="<?php echo $Grill->id_grill;?>"/>
+		<p><textarea name="text" class="form-control" rows="3" placeholder="Example Tweet"></textarea></p>
+		<p class="pull-right"><button type="button" class="add btn btn-primary">Add New</button></p>
+		<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
 		<input type="hidden" name="secret" value="<?php echo $Grill->secret;?>"/>
 	</div>
 </form>
