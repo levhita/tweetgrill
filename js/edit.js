@@ -46,6 +46,26 @@ $(document).ready(function(){
 
 	});
 
+	$('#tweets').delegate('textarea', 'keyup', function(){
+		var text =  $(this).val();
+		var left = 140 - twttr.txt.getTweetLength(text);
+		
+		if (left < 0) {
+			$(this).closest('.form-group').find('.counter').addClass('text-danger');
+		} else if(left < 15){
+			$(this).closest('.form-group').find('.counter').addClass('text-warning');
+		} else {
+			$(this).closest('.form-group').find('.counter').removeClass('text-warning');
+			$(this).closest('.form-group').find('.counter').removeClass('text-danger');
+		}
+		$(this).closest('.form-group').find('.counter').html(left);
+	});
+
+
+
+
+
+
 	$('#new_tweet button.add').on('click', function(){
 		var form = $(this).closest('form');
 		var data ={
@@ -64,6 +84,7 @@ $(document).ready(function(){
 			} else {
 				var tweet = response.tweet;
 				var new_tweet = '';
+				new_tweet += '<div class="col-sm-12">';
 				new_tweet += '<form id="tweet_'+tweet.id_tweet+'">';
 				new_tweet += '	<div class="form-group">';
 				new_tweet += '		<p><textarea name="text" class="form-control" rows="2">'+tweet.text+'</textarea></p>';
@@ -76,6 +97,7 @@ $(document).ready(function(){
 				new_tweet += '		<input type="hidden" name="id_tweet" value="'+tweet.id_tweet+'"/>';
 				new_tweet += '	</div>';
 				new_tweet += '</form>';
+				new_tweet += '</div>';
 				$('#tweets').append(new_tweet);
 				$(form).find('textarea[name="text"]').val('');
 			}
@@ -99,7 +121,7 @@ $(document).ready(function(){
 			if(typeof response.error !== 'undefined'){
 				alert(response.error);
 			} else {
-				$("#name").html(response.name);
+				$("#name").html(response.name.substring(0, 26));
 			}
 		});
 	});
