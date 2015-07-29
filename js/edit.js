@@ -29,7 +29,7 @@ $(document).ready(function(){
 			'id_tweet' : $(form).find('input[name="id_tweet"]').val(),
 		}
 	
-		if (confirm("Are you sure?")) {
+		if (confirm("Do you really want to delete this tweet?")) {
     			$.ajax({
 				method: "POST",
 				url: "delete.php",
@@ -104,14 +104,13 @@ $(document).ready(function(){
 		});
 	});
 
-	$('#delete_grill').on('click', function(){
-		if (confirm("Are you sure?")) {
+	$('#delete_grill').on('click', function() {
+		if (confirm("Do you really want to delete this grill?")) {
 			var form = $("#grill_form");
 			var grill 	= $(form).find('input[name="grill"]').val();
 			var secret = $(form).find('input[name="secret"]').val();
 			window.location = 'delete_grill.php?grill='+grill+'&secret='+secret;
 		}
-		
 	});
 
 });

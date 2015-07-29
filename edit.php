@@ -26,9 +26,9 @@ include("header.php");
 
 <h1><span id="name"><?php echo htmlspecialchars($Grill->name)?></span>
 	<div class="pull-right">
-		<button id="delete_grill" type="button" class="btn btn-danger">Delete</button>
+		<button id="delete_grill" type="button" class="btn btn-link"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 		<button id="edit_name" type="button" class="btn btn-default">Edit Name</button>
-		<a href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link</a>
+		<a href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
 	</div>
 </h1>
 <div id="tweets">
@@ -37,7 +37,7 @@ include("header.php");
 			<div class="form-group">
 				<p><textarea name="text" class="form-control" rows="2"><?php echo htmlspecialchars($Tweet->text)?></textarea></p>
 				<p class="pull-right">
-					<button type="button" class="delete btn btn-default">Delete</button>
+					<button type="button" class="delete btn btn-link">Delete</button>
 					<button type="button" class="update btn btn-primary">Update</button>
 				</p>
 				<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
