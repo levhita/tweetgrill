@@ -38,7 +38,7 @@ include("header.php");
 			<li><a href="#" id="edit_name">Name</a></li>
 			<li><a href="#" id="edit_description">Description</a></li>
 			<li role="separator" class="divider"></li>
-    		<li><a href="#" id="delete_grill">Delete</a></li>
+			<li><a href="#" id="delete_grill">Delete</a></li>
 		</ul>
 	</div>	
 	<a href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
@@ -51,8 +51,9 @@ include("header.php");
 <hr/>
 <div id="tweets" class="row">
 	<?php foreach($Grill->tweets as $Tweet): ?>
-		<div class="col-sm-12">
-			<form id="tweet_<?php echo $Tweet->id_tweet; ?>">
+		
+		<form id="tweet_<?php echo $Tweet->id_tweet; ?>">
+			<div class="col-sm-12">
 				<div class="form-group">
 					<p><textarea name="text" class="form-control" rows="3"><?php echo htmlspecialchars($Tweet->text)?></textarea></p>
 					<p class="pull-right">
@@ -66,10 +67,10 @@ include("header.php");
 					<input type="hidden" name="secret" value="<?php echo $Grill->secret;?>"/>
 					<input type="hidden" name="id_tweet" value="<?php echo $Tweet->id_tweet;?>"/>
 				</div>
-			</form>
-		</div>
-		<div class="clearfix"></div>
-		<hr>
+				<div class="clearfix"></div>
+				<hr>
+			</div>
+		</form>
 	<?php endforeach;?>
 </div>
 <div class="row">

@@ -144,8 +144,8 @@ $(document).ready(function(){
 			} else {
 				var tweet = response.tweet;
 				var new_tweet = '';
-				new_tweet += '<div class="col-sm-12">';
 				new_tweet += '<form id="tweet_'+tweet.id_tweet+'">';
+				new_tweet += '<div class="col-sm-12">';
 				new_tweet += '	<div class="form-group">';
 				new_tweet += '		<p><textarea name="text" class="form-control" rows="3">'+tweet.text+'</textarea></p>';
 				new_tweet += '		<p class="pull-right">';
@@ -158,8 +158,12 @@ $(document).ready(function(){
 				new_tweet += '		<input type="hidden" name="secret" value="'+tweet.secret+'"/>';
 				new_tweet += '		<input type="hidden" name="id_tweet" value="'+tweet.id_tweet+'"/>';
 				new_tweet += '	</div>';
-				new_tweet += '</form>';
+				new_tweet += '<div class="clearfix"></div>';
+				new_tweet += '<hr>';
 				new_tweet += '</div>';
+				new_tweet += '</form>';
+				
+				
 				$('#tweets').append(new_tweet);
 				$('#tweets textarea').each(function(){
 					update_counter(this);
