@@ -9,13 +9,14 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			method: "POST",
-			url: "update.php",
+			url: "update_tweet.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
 			if(typeof response.error !== 'undefined'){
 				alert(response.error);
 			} else {
+				/** TODO: change relation **/
 				alert('Updated Tweet.');
 			}
 		});
@@ -42,6 +43,8 @@ $(document).ready(function(){
 					$(form).remove();
 				}
 			});
+		} else {
+			return false;
 		}
 
 	});
@@ -61,6 +64,9 @@ $(document).ready(function(){
 
 	$('#edit_name').on('click', function(){
 		var new_name = prompt("Please enter the new name", $("#name").text());
+		if (new_name == '' || new_name == null) {
+ 			return false;
+		}
 		var form = $("#grill_form");
 		var data ={
 			'name' : new_name,
@@ -69,7 +75,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			method: "POST",
-			url: "update_name.php",
+			url: "update_grill.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -80,6 +86,30 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$('#edit_description').on('click', function(){
+		var new_description = prompt("Please enter the new description", $("#description").text());
+		if (new_description == '' || new_description == null) {
+ 			return false;
+		}
+		var form = $("#grill_form");
+		var data ={
+			'description' : new_description,
+			'grill' : $(form).find('input[name="grill"]').val(),
+			'secret' : $(form).find('input[name="secret"]').val(),
+		}
+		$.ajax({
+			method: "POST",
+			url: "update_grill.php",
+			data: data,
+			dataType: 'json'
+		}).done(function(response) {
+			if(typeof response.error !== 'undefined'){
+				alert(response.error);
+			} else {
+				$("#description").html(response.description.substring(0, 255));
+			}
+		});
+	});
 
 	$('#delete_grill').on('click', function() {
 		if (confirm("Do you really want to delete this grill?")) {
@@ -87,6 +117,8 @@ $(document).ready(function(){
 			var grill 	= $(form).find('input[name="grill"]').val();
 			var secret = $(form).find('input[name="secret"]').val();
 			window.location = 'delete_grill.php?grill='+grill+'&secret='+secret;
+		} else{
+			return false;
 		}
 	});
 
@@ -115,7 +147,7 @@ $(document).ready(function(){
 				new_tweet += '<div class="col-sm-12">';
 				new_tweet += '<form id="tweet_'+tweet.id_tweet+'">';
 				new_tweet += '	<div class="form-group">';
-				new_tweet += '		<p><textarea name="text" class="form-control" rows="2">'+tweet.text+'</textarea></p>';
+				new_tweet += '		<p><textarea name="text" class="form-control" rows="3">'+tweet.text+'</textarea></p>';
 				new_tweet += '		<p class="pull-right">';
 				new_tweet += '			<span class="counter text-muted">140</span>&nbsp;';
 				new_tweet += '			<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
@@ -136,7 +168,6 @@ $(document).ready(function(){
 				$(form).find('textarea[name="text"]').focus();
 				$(form).find('.counter').html(140);
 				$(form).find('.counter').removeClass('text-danger');
-				$(form).find('.counter').removeClass('text-warning');
 			}
 		});
 	});
@@ -146,12 +177,9 @@ function update_counter(element) {
 	var text =  $(element).val();
 	var left = 140 - twttr.txt.getTweetLength(text);
 
-	if (left < 0) {
+	if(left < 15){
 		$(element).closest('.form-group').find('.counter').addClass('text-danger');
-	} else if(left < 15){
-		$(element).closest('.form-group').find('.counter').addClass('text-warning');
 	} else {
-		$(element).closest('.form-group').find('.counter').removeClass('text-warning');
 		$(element).closest('.form-group').find('.counter').removeClass('text-danger');
 	}
 	$(element).closest('.form-group').find('.counter').html(left);

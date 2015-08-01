@@ -4,10 +4,11 @@ require_once "bootstrap.php";
 class Grill {
 	
 	public $id_grill = 0;
-	public $name= 'New Grill';
 	public $unique_id = '';
+	public $name = 'New Grill';
+	public $description = '';
 	public $secret = '';
-	public $enabled = true;
+	public $published = true;
 	public $tweets = array();
 
 	public function __construct($unique_id=''){
@@ -32,9 +33,10 @@ class Grill {
 			}
 			$this->id_grill = $Grill->id_grill;
 			$this->name = $Grill->name;
+			$this->description = $Grill->description;
 			$this->unique_id = $Grill->unique_id;
 			$this->secret = $Grill->secret;
-			$this->enabled = $Grill->enabled;
+			$this->published = ($Grill->published=='1');
 			$this->load_tweets();
 		}
 	}
@@ -60,12 +62,12 @@ class Grill {
 	}
 
 	/** @todo add error detection **/
-	public function update_name($name) {
+	public function update_value($field, $value) {
 		global $Db;
-		$query = $Db->prepare("UPDATE grill SET name=:name WHERE id_grill=:id_grill");
+		$query = $Db->prepare("UPDATE grill SET $field=:$field WHERE id_grill=:id_grill");
 		$query->execute(array(
-			':name' 	=> $name,
-			':id_grill'	=> $this->id_grill,
+			":$field" 	=> $value,
+			':id_grill'		=> $this->id_grill,
 		));
 		return true;
 	}

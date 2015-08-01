@@ -27,21 +27,34 @@ include("header.php");
 ?>
 
 
-	<h2 class="pull-left text-left" id="name"><?php echo htmlspecialchars($Grill->name)?></h2>
-	<div class="clearfix visible-xs"></div>
-	<div class="text-right" style="margin-top:18px;margin-bottom:0px;">
-		<button id="delete_grill" type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-		<button id="edit_name" type="button" class="btn btn-default">Edit Name</button>
-		<a href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
-	</div>
-
+<h2 class="pull-left text-left" id="name"><?php echo htmlspecialchars($Grill->name)?></h2>
+<div class="clearfix visible-xs"></div>
+<div class="text-right" style="margin-top:18px;margin-bottom:0px;">
+	<div class="btn-group">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Edit <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#" id="edit_name">Name</a></li>
+			<li><a href="#" id="edit_description">Description</a></li>
+			<li role="separator" class="divider"></li>
+    		<li><a href="#" id="delete_grill">Delete</a></li>
+		</ul>
+	</div>	
+	<a href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
+</div>
+<div class="clearfix visible-xs"></div>
 <br/>
+<div class="row">
+	<div class="col-sm-12" id="description"><?php echo htmlspecialchars($Grill->description)?></div>
+</div>
+<hr/>
 <div id="tweets" class="row">
 	<?php foreach($Grill->tweets as $Tweet): ?>
 		<div class="col-sm-12">
 			<form id="tweet_<?php echo $Tweet->id_tweet; ?>">
 				<div class="form-group">
-					<p><textarea name="text" class="form-control" rows="2"><?php echo htmlspecialchars($Tweet->text)?></textarea></p>
+					<p><textarea name="text" class="form-control" rows="3"><?php echo htmlspecialchars($Tweet->text)?></textarea></p>
 					<p class="pull-right">
 						<span class="counter text-muted">140</span>&nbsp;
 						<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -56,6 +69,7 @@ include("header.php");
 			</form>
 		</div>
 		<div class="clearfix"></div>
+		<hr>
 	<?php endforeach;?>
 </div>
 <div class="row">
@@ -65,8 +79,8 @@ include("header.php");
 				<label for="tweet">Create a new Tweet:</label>
 				<p><textarea name="text" class="form-control" rows="2" placeholder="Follow @levhita for some awesome updates #FF"></textarea></p>
 				<p class="pull-right">
-				<span class="counter text-muted">140</span>&nbsp;
-				<button type="button" class="add btn btn-primary">Save</button>
+					<span class="counter text-muted">140</span>&nbsp;
+					<button type="button" class="add btn btn-primary">Save</button>
 				</p>
 				<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
 				<input type="hidden" name="secret" value="<?php echo $Grill->secret;?>"/>
