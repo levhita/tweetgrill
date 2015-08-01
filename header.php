@@ -9,7 +9,7 @@
     <meta name="author" content="@levhita">
     <link rel="icon" href="favicon.ico">
 
-    <title>TweetGrill</title>
+    <title>TweetGrill<?php if(isset($Grill)){echo " : ".htmlspecialchars($Grill->name);}?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">

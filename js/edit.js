@@ -96,6 +96,7 @@ $(document).ready(function(){
 				alert(response.error);
 			} else {
 				$("#name").html(response.name.substring(0, 22));
+				document.title = 'Tweet Grill : '+response.name.substring(0, 22);
 			}
 		});
 		return false;
