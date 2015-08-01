@@ -26,7 +26,14 @@ include("header.php");
 
 ?>
 
-<h2><?php echo htmlspecialchars($Grill->name)?></h2>
+<div class="row">
+	<div class="col-sm-6">
+		<h2><?php echo htmlspecialchars($Grill->name)?></h2>
+	</div>
+	<div class="col-sm-6 text-right">
+		<div class="addthis_custom_sharing"></div>
+	</div>
+</div>
 <div class="row">
 	<div class="col-sm-12" id="description">
 		<?php echo nl2br(htmlspecialchars($Grill->description))?>
@@ -45,5 +52,6 @@ include("header.php");
 		<hr>
 	<?php endforeach;?>
 </div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55bd3b758b697113" async="async"></script>
 
 <?php include("footer.php") ?>

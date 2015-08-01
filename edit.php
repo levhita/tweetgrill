@@ -74,7 +74,7 @@ include("header.php");
 						<span class="counter text-muted">140</span>&nbsp;
 						<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 						<button type="button" class="tweet btn btn-default">Tweet</button>
-						<button type="button" style="display:none" class="update btn btn-primary"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
+						<button type="button" style="display:none" class="update btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 
 					</p>
 					<input type="hidden" name="original_text" value="<?php echo htmlspecialchars($Tweet->text)?>"/>

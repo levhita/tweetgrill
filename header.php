@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Quickly create tweet's grills for your human bots to tweet easily.">
+    <meta name="description" content="Cooking tweets easily.">
     <meta name="author" content="@levhita">
     <link rel="icon" href="favicon.ico">
 
