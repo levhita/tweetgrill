@@ -16,8 +16,8 @@ $(document).ready(function(){
 			if(typeof response.error !== 'undefined'){
 				alert(response.error);
 			} else {
-				/** TODO: change relation **/
-				alert('Updated Tweet.');
+				$(form).find("input[name='original_text']").val($(form).find('textarea[name="text"]').val());
+				$(form).find('button.update').hide('fast');
 			}
 		});
 	});
@@ -56,6 +56,17 @@ $(document).ready(function(){
 	});
 
 	$('#tweets').delegate('textarea', 'keyup', function(){
+		var form = $(this).closest('form');
+		var original = $(form).find("input[name='original_text']").val();
+		if(this.value !== original){
+			if($(form).find('button.update').css('display') == 'none') {
+				$(form).find('button.update').show('fast');
+			}
+		} else {
+			if($(form).find('button.update').css('display') == 'inline-block') {
+				$(form).find('button.update').hide('fast');
+			}
+		}
 		if(this.value.length > 500) {this.value = this.value.substr(0, 500);}
 		update_counter(this);
 	});
@@ -192,8 +203,9 @@ $(document).ready(function(){
 				new_tweet += '			<span class="counter text-muted">140</span>&nbsp;';
 				new_tweet += '			<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
 				new_tweet += '			<button type="button" class="tweet btn btn-default">Tweet</button>';
-				new_tweet += '			<button type="button" class="update btn btn-primary">Update</button>';
+				new_tweet += '			<button type="button" style="display:none" class="update btn btn-primary"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>';
 				new_tweet += '		</p>';
+				new_tweet += '<input type="hidden" name="original_text" value="'+tweet.text+'"/>';
 				new_tweet += '		<input type="hidden" name="grill" value="'+tweet.unique_id+'"/>';
 				new_tweet += '		<input type="hidden" name="secret" value="'+tweet.secret+'"/>';
 				new_tweet += '		<input type="hidden" name="id_tweet" value="'+tweet.id_tweet+'"/>';
