@@ -35,9 +35,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">TweetGrill</a>
+          <a class="navbar-brand" href="/"><strong>TweetGrill</strong></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+             <li><a href="create.php">Create New Grill</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="about.php">About</a></li>-->
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>

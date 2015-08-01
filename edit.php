@@ -25,11 +25,7 @@ $scripts[] = "js/twitter-text-1.12.0.min.js";
 include("header.php");
 
 ?>
-
-
-<h2 class="pull-left text-left" id="name"><?php echo htmlspecialchars($Grill->name)?></h2>
-<div class="clearfix visible-xs"></div>
-<div class="text-right" style="margin-top:18px;margin-bottom:0px;">
+<div class="text-right pull-right" style="margin-top:18px;margin-bottom:0px;">
 	<div class="btn-group">
 		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Edit <span class="caret"></span>
@@ -45,7 +41,7 @@ include("header.php");
 	<a id="public_link" target="_blank" href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
 </div>
 <div class="clearfix visible-xs"></div>
-<br/>
+<h2 class="text-left" id="name"><?php echo htmlspecialchars($Grill->name)?></h2>
 <div class="row">
 	<div class="col-sm-12" id="description"><?php echo htmlspecialchars($Grill->description)?></div>
 </div>
