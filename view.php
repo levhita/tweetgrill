@@ -26,14 +26,11 @@ include("header.php");
 
 ?>
 
-<div class="row">
-	<div class="col-sm-6">
-		<h2><?php echo htmlspecialchars($Grill->name)?></h2>
-	</div>
-	<div class="col-sm-6 text-right">
-		<div class="addthis_custom_sharing"></div>
-	</div>
+<div class="pull-right" style="margin-top: 20px;">
+	<div class="addthis_sharing_toolbox"></div>
 </div>
+<h2><?php echo htmlspecialchars($Grill->name)?></h2>
+
 <div class="row">
 	<div class="col-sm-12" id="description">
 		<?php echo nl2br(htmlspecialchars($Grill->description))?>
@@ -52,6 +49,7 @@ include("header.php");
 		<hr>
 	<?php endforeach;?>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55bd3b758b697113" async="async"></script>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e906de04dcb0610" async="async"></script>
 
 <?php include("footer.php") ?>

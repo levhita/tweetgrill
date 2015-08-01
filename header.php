@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Cooking tweets easily.">
+    <meta name="description" content="<?php
+      if(isset($Grill)){
+        echo htmlspecialchars($Grill->description);
+      } else{
+        echo "Cooking Tweets Easily.";
+      }?>">
     <meta name="author" content="@levhita">
     <link rel="icon" href="favicon.ico">
 
