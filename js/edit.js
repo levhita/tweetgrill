@@ -40,13 +40,13 @@ $(document).ready(function(){
 				if(typeof response.error !== 'undefined'){
 					alert(response.error);
 				} else {
-					$(form).remove();
+					$(form).hide('fast', function() {
+						$(form).remove();
+					});
 				}
 			});
-		} else {
-			return false;
 		}
-
+		return false;
 	});
 	
 	$('#tweets').delegate('button.tweet', 'click', function(){
@@ -87,7 +87,46 @@ $(document).ready(function(){
 				$("#name").html(response.name.substring(0, 22));
 			}
 		});
+		return false;
 	});
+	$('#toggle_published').on('click', function(){
+		var new_published = ($(this).text()=='Publish')?'1':'0';
+			
+		var form = $("#grill_form");
+		var data ={
+			'published' : new_published,
+			'grill' : $(form).find('input[name="grill"]').val(),
+			'secret' : $(form).find('input[name="secret"]').val(),
+		}
+		$.ajax({
+			method: "POST",
+			url: "update_grill.php",
+			data: data,
+			dataType: 'json'
+		}).done(function(response) {
+			if(typeof response.error !== 'undefined'){
+				alert(response.error);
+			} else {
+				if (new_published==1) {
+					$("#toggle_published").html('Unpublish');
+					$("#toggle_published").removeClass('btn-primary');
+					$("#toggle_published").addClass('btn-default');
+					$("#public_link").show('fast');
+				} else {
+					$("#toggle_published").html('Publish');
+					$("#toggle_published").removeClass('btn-default');
+					$("#toggle_published").addClass('btn-primary');
+					$("#public_link").hide('fast');
+				}
+			}
+		});
+		return false;
+	});
+	
+	if ($("#toggle_published").text()=='Publish'){
+		$("#public_link").hide();
+	}
+	
 	$('#edit_description').on('click', function(){
 		var new_description = prompt("Please enter the new description", $("#description").text());
 		if (new_description == '' || new_description == null) {
@@ -119,9 +158,8 @@ $(document).ready(function(){
 			var grill 	= $(form).find('input[name="grill"]').val();
 			var secret = $(form).find('input[name="secret"]').val();
 			window.location = 'delete_grill.php?grill='+grill+'&secret='+secret;
-		} else{
-			return false;
 		}
+		return false;
 	});
 
 	$('#tweets textarea').each(function(){
@@ -146,7 +184,7 @@ $(document).ready(function(){
 			} else {
 				var tweet = response.tweet;
 				var new_tweet = '';
-				new_tweet += '<form id="tweet_'+tweet.id_tweet+'">';
+				new_tweet += '<form style="display:none" id="tweet_'+tweet.id_tweet+'">';
 				new_tweet += '<div class="col-sm-12">';
 				new_tweet += '	<div class="form-group">';
 				new_tweet += '		<p><textarea name="text" class="form-control" rows="3">'+tweet.text+'</textarea></p>';
@@ -161,12 +199,13 @@ $(document).ready(function(){
 				new_tweet += '		<input type="hidden" name="id_tweet" value="'+tweet.id_tweet+'"/>';
 				new_tweet += '	</div>';
 				new_tweet += '<div class="clearfix"></div>';
-				new_tweet += '<hr>';
+				new_tweet += '<br>';
 				new_tweet += '</div>';
 				new_tweet += '</form>';
 				
 				
 				$('#tweets').append(new_tweet);
+				$("#tweets form").last().show('fast');
 				$('#tweets textarea').each(function(){
 					update_counter(this);
 				});
@@ -176,6 +215,7 @@ $(document).ready(function(){
 				$(form).find('.counter').removeClass('text-danger');
 			}
 		});
+		return false;
 	});
 });
 

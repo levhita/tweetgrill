@@ -14,6 +14,11 @@ try {
 	die();
 } 
 
+if($Grill->published=='0'){
+	header("Location: /");
+	die();
+}
+
 $scripts[] = "js/view.js";
 $scripts[] = "js/twitter-text-1.12.0.min.js";
 

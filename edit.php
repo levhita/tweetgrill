@@ -41,12 +41,30 @@ include("header.php");
 			<li><a href="#" id="delete_grill">Delete</a></li>
 		</ul>
 	</div>	
-	<a href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
+	<a href="#" id="toggle_published" class="btn <?php echo ($Grill->published=='0')?'btn-primary':'btn-default';?>"><?php echo ($Grill->published=='0')?'Publish':'Unpublish';?></a>
+	<a id="public_link" target="_blank" href="view.php?grill=<?php echo $Grill->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
 </div>
 <div class="clearfix visible-xs"></div>
 <br/>
 <div class="row">
 	<div class="col-sm-12" id="description"><?php echo htmlspecialchars($Grill->description)?></div>
+</div>
+<hr/>
+<div class="row">
+	<div class="col-sm-12">
+		<form id="new_tweet">
+			<div class="form-group">
+				<label for="tweet">Create a new Tweet:</label>
+				<p><textarea name="text" class="form-control" rows="2" placeholder="Follow @levhita for some awesome updates #FF"></textarea></p>
+				<p class="pull-right">
+					<span class="counter text-muted">140</span>&nbsp;
+					<button type="button" class="add btn btn-primary">Save</button>
+				</p>
+				<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
+				<input type="hidden" name="secret" value="<?php echo $Grill->secret;?>"/>
+			</div>
+		</form>
+	</div>
 </div>
 <hr/>
 <div id="tweets" class="row">
@@ -68,27 +86,12 @@ include("header.php");
 					<input type="hidden" name="id_tweet" value="<?php echo $Tweet->id_tweet;?>"/>
 				</div>
 				<div class="clearfix"></div>
-				<hr>
+				<br>
 			</div>
 		</form>
 	<?php endforeach;?>
 </div>
-<div class="row">
-	<div class="col-sm-12">
-		<form id="new_tweet">
-			<div class="form-group">
-				<label for="tweet">Create a new Tweet:</label>
-				<p><textarea name="text" class="form-control" rows="2" placeholder="Follow @levhita for some awesome updates #FF"></textarea></p>
-				<p class="pull-right">
-					<span class="counter text-muted">140</span>&nbsp;
-					<button type="button" class="add btn btn-primary">Save</button>
-				</p>
-				<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
-				<input type="hidden" name="secret" value="<?php echo $Grill->secret;?>"/>
-			</div>
-		</form>
-	</div>
-</div>
+
 
 <form id="grill_form">
 	<input type="hidden" name="grill" value="<?php echo $Grill->unique_id;?>"/>
