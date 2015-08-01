@@ -56,9 +56,11 @@ $(document).ready(function(){
 	});
 
 	$('#tweets').delegate('textarea', 'keyup', function(){
+		if(this.value.length > 500) {this.value = this.value.substr(0, 500);}
 		update_counter(this);
 	});
 	$('#new_tweet textarea').on('keyup', function(){
+		if(this.value.length > 500) {this.value = this.value.substr(0, 500);}
 		update_counter(this);
 	});
 

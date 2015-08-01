@@ -2,8 +2,8 @@ $(document).ready(function(){
 
 	$('#tweets .tweet').each(function(){
 		var text = $(this).text();
-		$(this).html(nl2br(twttr.txt.autoLink(twttr.txt.htmlEscape(text))));
-		//$(this).html(twttr.txt.autoLink(twttr.txt.htmlEscape(text)));
+		twttr.txt.autoLink("#hashtag @mention http://test.com");
+		$(this).html(nl2br(twttr.txt.autoLink(twttr.txt.htmlEscape(text),{urlTarget:'_blank'})));
 	});
 	
 });
