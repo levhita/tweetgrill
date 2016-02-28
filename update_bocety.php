@@ -1,6 +1,6 @@
 <?php
 require_once("bootstrap.php");
-require_once("Grill.php");
+require_once("Bocety.php");
 
 $valid_fields= array('name', 'description', 'published');
 
@@ -13,23 +13,23 @@ foreach ($valid_fields as $field) {
 	}
 }
 
-if ( $field == '' || !isset($_POST['grill']) || !isset($_POST['secret']) || empty($_POST['grill']) || empty($_POST['secret']) ){
+if ( $field == '' || !isset($_POST['bocety']) || !isset($_POST['secret']) || empty($_POST['bocety']) || empty($_POST['secret']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));
 	die();
 }
 
 try {
-	$Grill = new Grill($_POST['grill']);
+	$Bocety = new Bocety($_POST['bocety']);
 } catch (Exception $e) {
-	echo json_encode(array('error'=>'Grill Not Found'));
+	echo json_encode(array('error'=>'Bocety Not Found'));
 	die();
 }
 
-if (!$Grill->validate_secret($_POST['secret'])) {
+if (!$Bocety->validate_secret($_POST['secret'])) {
 	echo json_encode(array('error'=>'Invalid Secret'));
 	die();
 }
 
-$Grill->update_value($field, $_POST[$field]);
+$Bocety->update_value($field, $_POST[$field]);
 
 echo json_encode(array('msg'=>'Sucess', $field=>htmlentities($_POST[$field])));

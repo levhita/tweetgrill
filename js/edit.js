@@ -1,15 +1,15 @@
 $(document).ready(function(){
-	$('#tweets').delegate('button.update', 'click', function(){
+	$('#contents').delegate('button.update', 'click', function(){
 		var form = $(this).closest('form');
 		var data ={
 			'text' : $(form).find('textarea[name="text"]').val(),
-			'grill' : $(form).find('input[name="grill"]').val(),
+			'bocety' : $(form).find('input[name="bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
-			'id_tweet' : $(form).find('input[name="id_tweet"]').val(),
+			'id_content' : $(form).find('input[name="id_content"]').val(),
 		}
 		$.ajax({
 			method: "POST",
-			url: "update_tweet.php",
+			url: "update_content.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -22,15 +22,15 @@ $(document).ready(function(){
 		});
 	});
 
-	$('#tweets').delegate('button.delete', 'click', function(){
+	$('#contents').delegate('button.delete', 'click', function(){
 		var form = $(this).closest('form');
 		var data ={
-			'grill' : $(form).find('input[name="grill"]').val(),
+			'bocety' : $(form).find('input[name="bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
-			'id_tweet' : $(form).find('input[name="id_tweet"]').val(),
+			'id_content' : $(form).find('input[name="id_content"]').val(),
 		}
 
-		if (confirm("Do you really want to delete this tweet?")) {
+		if (confirm("Do you really want to delete this content?")) {
 			$.ajax({
 				method: "POST",
 				url: "delete.php",
@@ -49,13 +49,13 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	$('#tweets').delegate('button.tweet', 'click', function(){
+	$('#contents').delegate('button.content', 'click', function(){
 		var form = $(this).closest('form');
 		var text = $(form).find('textarea[name="text"]').val();
-		window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text), '_blank');
+		window.open("https://twitter.com/intent/content?text="+encodeURIComponent(text), '_blank');
 	});
 
-	$('#tweets').delegate('textarea', 'keyup', function(){
+	$('#contents').delegate('textarea', 'keyup', function(){
 		var form = $(this).closest('form');
 		var original = $(form).find("input[name='original_text']").val();
 		if(this.value !== original){
@@ -70,7 +70,7 @@ $(document).ready(function(){
 		if(this.value.length > 500) {this.value = this.value.substr(0, 500);}
 		update_counter(this);
 	});
-	$('#new_tweet textarea').on('keyup', function(){
+	$('#new_content textarea').on('keyup', function(){
 		if(this.value.length > 500) {this.value = this.value.substr(0, 500);}
 		update_counter(this);
 	});
@@ -80,15 +80,15 @@ $(document).ready(function(){
 		if (new_name == '' || new_name == null) {
  			return false;
 		}
-		var form = $("#grill_form");
+		var form = $("#bocety_form");
 		var data ={
 			'name' : new_name,
-			'grill' : $(form).find('input[name="grill"]').val(),
+			'bocety' : $(form).find('input[name="bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
 		}
 		$.ajax({
 			method: "POST",
-			url: "update_grill.php",
+			url: "update_bocety.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -96,7 +96,7 @@ $(document).ready(function(){
 				alert(response.error);
 			} else {
 				$("#name").html(response.name.substring(0, 22));
-				document.title = 'Tweet Grill : '+response.name.substring(0, 22);
+				document.title = 'Bocety : '+response.name.substring(0, 22);
 			}
 		});
 		return false;
@@ -104,15 +104,15 @@ $(document).ready(function(){
 	$('#toggle_published').on('click', function(){
 		var new_published = ($(this).text()=='Publish')?'1':'0';
 			
-		var form = $("#grill_form");
+		var form = $("#bocety_form");
 		var data ={
 			'published' : new_published,
-			'grill' : $(form).find('input[name="grill"]').val(),
+			'bocety' : $(form).find('input[name="bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
 		}
 		$.ajax({
 			method: "POST",
-			url: "update_grill.php",
+			url: "update_bocety.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -144,15 +144,15 @@ $(document).ready(function(){
 		if (new_description == '' || new_description == null) {
  			return false;
 		}
-		var form = $("#grill_form");
+		var form = $("#bocety_form");
 		var data ={
 			'description' : new_description,
-			'grill' : $(form).find('input[name="grill"]').val(),
+			'bocety' : $(form).find('input[name="bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
 		}
 		$.ajax({
 			method: "POST",
-			url: "update_grill.php",
+			url: "update_bocety.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -164,25 +164,25 @@ $(document).ready(function(){
 		});
 	});
 
-	$('#delete_grill').on('click', function() {
-		if (confirm("Do you really want to delete this grill?")) {
-			var form = $("#grill_form");
-			var grill 	= $(form).find('input[name="grill"]').val();
+	$('#delete_bocety').on('click', function() {
+		if (confirm("Do you really want to delete this bocety?")) {
+			var form = $("#bocety_form");
+			var bocety 	= $(form).find('input[name="bocety"]').val();
 			var secret = $(form).find('input[name="secret"]').val();
-			window.location = 'delete_grill.php?grill='+grill+'&secret='+secret;
+			window.location = 'delete_bocety.php?bocety='+bocety+'&secret='+secret;
 		}
 		return false;
 	});
 
-	$('#tweets textarea').each(function(){
+	$('#contents textarea').each(function(){
 		update_counter(this);
 	});
 
-	$('#new_tweet button.add').on('click', function(){
+	$('#new_content button.add').on('click', function(){
 		var form = $(this).closest('form');
 		var data ={
 			'text' : $(form).find('textarea[name="text"]').val(),
-			'grill' : $(form).find('input[name="grill"]').val(),
+			'bocety' : $(form).find('input[name="bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
 		}
 		$.ajax({
@@ -194,32 +194,32 @@ $(document).ready(function(){
 			if(typeof response.error !== 'undefined'){
 				alert(response.error);
 			} else {
-				var tweet = response.tweet;
-				var new_tweet = '';
-				new_tweet += '<form style="display:none" id="tweet_'+tweet.id_tweet+'">';
-				new_tweet += '<div class="col-sm-12">';
-				new_tweet += '	<div class="form-group">';
-				new_tweet += '		<p><textarea name="text" class="form-control" rows="3">'+tweet.text+'</textarea></p>';
-				new_tweet += '		<p class="pull-right">';
-				new_tweet += '			<span class="counter text-muted">140</span>&nbsp;';
-				new_tweet += '			<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
-				new_tweet += '			<button type="button" class="tweet btn btn-default">Tweet</button>';
-				new_tweet += '			<button type="button" style="display:none" class="update btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>';
-				new_tweet += '		</p>';
-				new_tweet += '<input type="hidden" name="original_text" value="'+tweet.text+'"/>';
-				new_tweet += '		<input type="hidden" name="grill" value="'+tweet.unique_id+'"/>';
-				new_tweet += '		<input type="hidden" name="secret" value="'+tweet.secret+'"/>';
-				new_tweet += '		<input type="hidden" name="id_tweet" value="'+tweet.id_tweet+'"/>';
-				new_tweet += '	</div>';
-				new_tweet += '<div class="clearfix"></div>';
-				new_tweet += '<br>';
-				new_tweet += '</div>';
-				new_tweet += '</form>';
+				var content = response.content;
+				var new_content = '';
+				new_content += '<form style="display:none" id="content_'+content.id_content+'">';
+				new_content += '<div class="col-sm-12">';
+				new_content += '	<div class="form-group">';
+				new_content += '		<p><textarea name="text" class="form-control" rows="3">'+content.text+'</textarea></p>';
+				new_content += '		<p class="pull-right">';
+				new_content += '			<span class="counter text-muted">140</span>&nbsp;';
+				new_content += '			<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
+				new_content += '			<button type="button" class="content btn btn-default">Content</button>';
+				new_content += '			<button type="button" style="display:none" class="update btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>';
+				new_content += '		</p>';
+				new_content += '<input type="hidden" name="original_text" value="'+content.text+'"/>';
+				new_content += '		<input type="hidden" name="bocety" value="'+content.unique_id+'"/>';
+				new_content += '		<input type="hidden" name="secret" value="'+content.secret+'"/>';
+				new_content += '		<input type="hidden" name="id_content" value="'+content.id_content+'"/>';
+				new_content += '	</div>';
+				new_content += '<div class="clearfix"></div>';
+				new_content += '<br>';
+				new_content += '</div>';
+				new_content += '</form>';
 				
 				
-				$('#tweets').append(new_tweet);
-				$("#tweets form").last().show('fast');
-				$('#tweets textarea').each(function(){
+				$('#contents').append(new_content);
+				$("#contents form").last().show('fast');
+				$('#contents textarea').each(function(){
 					update_counter(this);
 				});
 				$(form).find('textarea[name="text"]').val('');
@@ -234,7 +234,7 @@ $(document).ready(function(){
 
 function update_counter(element) {
 	var text =  $(element).val();
-	var left = 140 - twttr.txt.getTweetLength(text);
+	var left = 140 - twttr.txt.getContentLength(text);
 
 	if(left < 15){
 		$(element).closest('.form-group').find('.counter').addClass('text-danger');

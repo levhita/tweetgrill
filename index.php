@@ -2,38 +2,45 @@
 <?php include("header.php"); ?>
 
 <div class="starter-template">
-	<h1>TweetGrill</h1>
-	<p class="lead">Cooking tweets easily.</p>
+	<h1>Bocety</h1>
+	<p class="lead">
+		<strong>Bocety</strong> it's streamlined content creation workflow for digital makerting strategists,
+		community managers and digital agencies.
+	</p>
+
+	<p class="lead">
+		You can go from creation, approval up to automatic scheduled publications, be efficient, keep your clients happy, <a href="http://i.imgur.com/dcOBuVk.gif">be Awesome!</a>
+	</p>
+	
 	<p>
-		<a class="btn btn-primary btn-lg" href="create.php">Create one Now!</a>
+		<a class="btn btn-primary btn-lg" href="create_acount.php">Try Bocety Now!</a>
 	</p>
 </div>
-<!--
-<div class="row">
+
+<div class="row marketing">
 	<div class="col-sm-4 text-center">
-		<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-		<h2>Activism</h2>
-		<p>Your team can use the grid so they don't forget an
-			importan thing to say or to mention certain public figure.
-		</p>
-		<p>A coordinated team is an effective one.</p>
+		<img class="" src="/images/edit.png" alt="Generic placeholder image" width="140" height="140">
+		<h2>Create content</h2>
+		<p>Generate and manage all your social content in one place.</p>
+		<p>We store your images and give you accurate previews of the content for the leading social media platforms.</p>
 	</div>
 	<div class="col-sm-4 text-center">
-		<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-		<h2>Recruitment</h2>
+		<img class="" src="/images/collab.png" alt="Generic placeholder image" width="140" height="140">
+		<h2>Collaborate</h2>
 		<p>
-			You can keep your open positions in a public place, where
-			people can apply themselves or share them easily with their friends and followers.
+			The designer can add the images to the image manager, while the community manager starts to work in the texts.
+		</p>
+		<p>
+			All while the digital strategist keep an eye on the work done without interrumpting the team.
 		</p>
 	</div>
 	<div class="col-sm-4 text-center">
-		<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-		<h2>Marketing</h2>
+		<img class="" src="/images/deliver.png" alt="Generic placeholder image" width="140" height="140">
+		<h2>Deliver</h2>
 		<p>
-			Work with your team to create the perfect set of tweets for the next month or week,
-			share it easily with all the stakeholders and run your campaing.
+			The client can review and approve the content in a frieldy interface, and then just let us publish it at the scheduled times for the leadibng social media platforms.
 		</p>
 	</div>
 </div>
--->
+
 <?php include("footer.php") ?>

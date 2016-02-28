@@ -2,7 +2,7 @@
 require_once("bootstrap.php");
 require_once("Bocety.php");
 
-if ( !isset($_POST['text'])|| !isset($_POST['bocety']) || !isset($_POST['secret']) || empty($_POST['text'])||empty($_POST['bocety']) || empty($_POST['secret']) ){
+if ( !isset($_POST['text'])|| !isset($_POST['bocety']) || !isset($_POST['secret']) || !isset($_POST['id_content']) || empty($_POST['text'])||empty($_POST['bocety']) || empty($_POST['secret']) || empty($_POST['id_content']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));
 	die();
 }
@@ -19,6 +19,6 @@ if (!$Bocety->validate_secret($_POST['secret'])) {
 	die();
 }
 
-$Content = $Bocety->add_content($_POST['text']);
-$Content->text = htmlspecialchars($Content->text);
-echo json_encode(array('msg'=>'Sucess', 'content'=> $Content));
+$Bocety->update_content($_POST['id_content'], $_POST['text']);
+
+echo json_encode(array('msg'=>'Sucess'));

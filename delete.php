@@ -1,24 +1,24 @@
 <?php
 require_once("bootstrap.php");
-require_once("Grill.php");
+require_once("Bocety.php");
 
-if ( !isset($_POST['grill']) || !isset($_POST['secret']) || !isset($_POST['id_tweet']) || empty($_POST['grill']) || empty($_POST['secret']) || empty($_POST['id_tweet']) ){
+if ( !isset($_POST['bocety']) || !isset($_POST['secret']) || !isset($_POST['id_content']) || empty($_POST['bocety']) || empty($_POST['secret']) || empty($_POST['id_content']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));
 	die();
 }
 
 try {
-	$Grill = new Grill($_POST['grill']);
+	$Bocety = new Bocety($_POST['bocety']);
 } catch (Exception $e) {
-	echo json_encode(array('error'=>'Grill Not Found'));
+	echo json_encode(array('error'=>'Bocety Not Found'));
 	die();
 }
 
-if (!$Grill->validate_secret($_POST['secret'])) {
+if (!$Bocety->validate_secret($_POST['secret'])) {
 	echo json_encode(array('error'=>'Invalid Secret'));
 	die();
 }
 
-$Grill->delete_tweet($_POST['id_tweet']);
+$Bocety->delete_content($_POST['id_content']);
 
 echo json_encode(array('msg'=>'Sucess'));

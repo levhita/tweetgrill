@@ -1,20 +1,20 @@
 <?php
 require_once("bootstrap.php");
-require_once("Grill.php");
+require_once("Bocety.php");
 
-if ( !isset($_GET['grill']) || empty($_GET['grill']) ){
+if ( !isset($_GET['bocety']) || empty($_GET['bocety']) ){
 	header("Location: /");
 	die();
 }
 
 try {
-	$Grill = new Grill($_GET['grill']);
+	$Bocety = new Bocety($_GET['bocety']);
 } catch (Exception $e) {
 	header("Location: /");
 	die();
 } 
 
-if($Grill->published=='0'){
+if($Bocety->published=='0'){
 	header("Location: /");
 	die();
 }
@@ -29,21 +29,21 @@ include("header.php");
 <div class="pull-right" style="margin-top: 20px;">
 	<div class="addthis_sharing_toolbox"></div>
 </div>
-<h2><?php echo htmlspecialchars($Grill->name)?></h2>
+<h2><?php echo htmlspecialchars($Bocety->name)?></h2>
 
 <div class="row">
 	<div class="col-sm-12" id="description">
-		<?php echo nl2br(htmlspecialchars($Grill->description))?>
+		<?php echo nl2br(htmlspecialchars($Bocety->description))?>
 	</div>
 </div>
 <hr/>
-<div id="tweets">
-	<?php foreach($Grill->tweets as $Tweet): ?>
+<div id="contents">
+	<?php foreach($Bocety->contents as $Content): ?>
 		<div class="panel panel-default">
-			<div class="tweet panel-body"><?php echo nl2br(htmlspecialchars($Tweet->text))?></div>
+			<div class="content panel-body"><?php echo nl2br(htmlspecialchars($Content->text))?></div>
 		</div>
 		<p class="pull-right" style="margin-top:-10px;margin-bottom:10px;">
-			<a target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo urlencode($Tweet->text)?>" class="btn btn-primary">Tweet Now!</a>
+			<a target="_blank" href="https://twitter.com/intent/content?text=<?php echo urlencode($Content->text)?>" class="btn btn-primary">Content Now!</a>
 		</p>
 		<div class="clearfix"></div>
 		<hr>

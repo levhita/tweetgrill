@@ -1,8 +1,8 @@
 <?php
 require_once("bootstrap.php");
-require_once("Grill.php");
+require_once("Bocety.php");
 
-$Grill = new Grill();
+$Bocety = new Bocety();
 
-header("Location: /edit.php?grill={$Grill->unique_id}&secret={$Grill->secret}");
+header("Location: /edit.php?bocety={$Bocety->unique_id}&secret={$Bocety->secret}");
 die();

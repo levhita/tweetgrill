@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$('#tweets .tweet').each(function(){
+	$('#contents .content').each(function(){
 		var text = $(this).text();
 		twttr.txt.autoLink("#hashtag @mention http://test.com");
 		$(this).html(nl2br(twttr.txt.autoLink(twttr.txt.htmlEscape(text),{urlTarget:'_blank'})));
