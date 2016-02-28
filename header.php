@@ -17,9 +17,7 @@
     <title>Bocety<?php if(isset($Bocety)){echo " : ".htmlspecialchars($Bocety->name);}?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="dist/css/theme.min.css" rel="stylesheet">-->
-    <!-- Custom styles for this template -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -27,12 +25,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!--<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>-->
   </head>
 
   <body>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55bd3b758b697113" async="async"></script>-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
