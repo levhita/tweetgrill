@@ -1,6 +1,6 @@
 <?php
 require_once("bootstrap.php");
-require_once("Bocety.php");
+require_once("models/Bocety.php");
 
 if ( !isset($_POST['bocety']) || !isset($_POST['secret']) || !isset($_POST['id_content']) || empty($_POST['bocety']) || empty($_POST['secret']) || empty($_POST['id_content']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));

@@ -1,6 +1,6 @@
 <?php
 require_once("bootstrap.php");
-require_once("Bocety.php");
+require_once("models/Bocety.php");
 
 $valid_fields= array('name', 'description', 'published');
 

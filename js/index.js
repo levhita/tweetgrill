@@ -31,9 +31,25 @@
 		});
 
 		$('#signup_button').click(function(){
+			var data = {
+				'email' :$('#email').val(),
+				'password' :$('#password').val()
+			}
 
-
-
+			$.ajax({
+				method: "POST",
+				url: "create_account.php",
+				data: data,
+				dataType: 'json'
+			}).done(function(response) {
+				if(typeof response.error !== 'undefined'){
+					bootbox.alert(response.error);
+				} else {
+					console.log(response);
+				}
+			});
+			
+			return false;
 		});
 	});
 
@@ -61,11 +77,11 @@
 		var password = $('#password').val();
 		var password_repeat = $('#password_repeat').val();
 		if ( password.length>0 ) {
-			
-			if (password.length >= 8){
+
+			if (password.length >= 8) {
 				$('#password').closest('.form-group').removeClass('has-warning');
 				$('#password').closest('.form-group').addClass('has-success');
-				$('#password_error').html('Password Valid')
+				$('#password_error').html('Password Valid');
 				$('#password_error').slideUp();
 
 				if ( password!=password_repeat ) {
@@ -94,24 +110,25 @@
 			$('#password').closest('.form-group').removeClass('has-warning');
 			$('#password').closest('.form-group').removeClass('has-success');
 			$('#password_error').slideUp();
-			
+
 			$('#password_repeat').closest('.form-group').removeClass('has-warning');
 			$('#password_repeat').closest('.form-group').removeClass('has-success');
 			$('#password_repeat_error').slideUp();
 		}
+
 	}
 
 	function checkValid() {
 		var password = $('#password').val();
 		var password_repeat = $('#password_repeat').val();
 		var email = $('#email').val();
-		
+
 		if (password.length>=8 &&  password==password_repeat && /(.+)@(.+){2,}\.(.+){2,}/.test(email) ) {
 			$('#signup_button').removeClass('disabled');
 		} else {
 			$('#signup_button').addClass('disabled');
-			
+
 		}
 	}
-	
+
 })();
