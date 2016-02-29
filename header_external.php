@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="<?php
       if(isset($Bocety)){
-        //echo htmlspecialchars($Bocety->description);
+        echo htmlspecialchars($Bocety->description);
       } else{
         echo "Cooking Contents Easily.";
       }?>">
@@ -41,10 +41,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <!--<li><a href="logout.php">Logout</a></li>-->
+            <li><a href="about.php">About</a></li>
+            <!--<li><a href="create_account.php">Signup</a></li>-->
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="login.php">Login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

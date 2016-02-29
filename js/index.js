@@ -43,9 +43,17 @@
 				dataType: 'json'
 			}).done(function(response) {
 				if(typeof response.error !== 'undefined'){
-					bootbox.alert(response.error);
+					bootbox.dialog({
+						message: response.error,
+						title: "Error",
+						buttons: {	main: {	label: "close",	className: "btn-primary" } }
+					});
 				} else {
-					console.log(response);
+					bootbox.dialog({
+						message: 'sdfsdfsdf',
+						title: "Success",
+						buttons: {	main: {	label: "Continue",	className: "btn-primary" } }
+					});
 				}
 			});
 			

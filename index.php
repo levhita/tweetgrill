@@ -1,6 +1,7 @@
 <?php include("bootstrap.php"); ?>
-<?php include("header.php"); ?>
+<?php include("header_external.php"); ?>
 <?php $scripts[]='/js/index.js'; ?>
+
 <div class="starter-template">
 	<h1>Bocety</h1>
 	<p class="lead">
@@ -77,7 +78,5 @@
 		</div>
 	</div>
 </div>
-
-
 
 <?php include("footer.php") ?>

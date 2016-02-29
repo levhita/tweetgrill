@@ -1,6 +1,6 @@
 <?php include("bootstrap.php"); ?>
-<?php include("header.php"); ?>
+<?php include("header_external.php"); ?>
 
-<h1>TweetGrill</h1>
+<h1>Bocety</h1>
 
 <?php include("footer.php") ?>
