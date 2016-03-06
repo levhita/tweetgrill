@@ -41,7 +41,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <!--<li><a href="logout.php">Logout</a></li>-->
+            <li><a href="/home/dashboard.php">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/home/logout.php">Logout</a></li>
