@@ -1,8 +1,8 @@
 <?php
-require_once("includes/bootstrap.php");
-require_once("models/Bocety.php");
+define(WEBROOT, '../../');
+require_once(WEBROOT . "includes/bootstrap.php");
 
-if ( !isset($_POST['bocety']) || !isset($_POST['secret']) || !isset($_POST['id_content']) || empty($_POST['bocety']) || empty($_POST['secret']) || empty($_POST['id_content']) ){
+if ( !isset($_POST['text'])|| !isset($_POST['bocety']) || !isset($_POST['secret']) || !isset($_POST['id_content']) || empty($_POST['text'])||empty($_POST['bocety']) || empty($_POST['secret']) || empty($_POST['id_content']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));
 	die();
 }
@@ -19,6 +19,6 @@ if (!$Bocety->validate_secret($_POST['secret'])) {
 	die();
 }
 
-$Bocety->delete_content($_POST['id_content']);
+$Bocety->update_content($_POST['id_content'], $_POST['text']);
 
 echo json_encode(array('msg'=>'Sucess'));

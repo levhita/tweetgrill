@@ -1,6 +1,6 @@
 <?php
-require_once("includes/bootstrap.php");
-require_once("models/Bocety.php");
+define(WEBROOT, '../../');
+require_once(WEBROOT . "includes/bootstrap.php");
 
 if ( !isset($_POST['text'])|| !isset($_POST['bocety']) || !isset($_POST['secret']) || empty($_POST['text'])||empty($_POST['bocety']) || empty($_POST['secret']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));

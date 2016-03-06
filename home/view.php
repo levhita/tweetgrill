@@ -1,5 +1,6 @@
 <?php
-require_once("includes/bootstrap.php");
+define(WEBROOT, '../');
+require_once(WEBROOT . "includes/bootstrap.php");
 
 if ( !isset($_GET['bocety']) || empty($_GET['bocety']) ){
 	header("Location: /");
@@ -21,7 +22,7 @@ if($Bocety->published=='0'){
 $scripts[] = "/js/view.js";
 $scripts[] = "/js/twitter-text-1.12.0.min.js";
 
-include("includes/header.php");
+include(WEBROOT . "includes/header.php");
 
 ?>
 
@@ -49,4 +50,4 @@ include("includes/header.php");
 	<?php endforeach;?>
 </div>
 
-<?php include("includes/footer.php") ?>
+<?php include(WEBROOT . "includes/footer.php") ?>

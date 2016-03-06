@@ -1,5 +1,6 @@
 <?php
-require_once("includes/bootstrap.php");
+define(WEBROOT, '../');
+require_once(WEBROOT . "includes/bootstrap.php");
 
 if ( !isset($_POST['email'])|| !isset($_POST['password']) || empty($_POST['email'])||empty($_POST['password']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));

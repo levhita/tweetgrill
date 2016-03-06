@@ -1,5 +1,8 @@
-<?php include("includes/bootstrap.php"); ?>
-<?php include("includes/header_external.php"); ?>
+<?php
+	define(WEBROOT, './');
+	include(WEBROOT . "includes/bootstrap.php");
+	include(WEBROOT . "includes/header_external.php");
+?>
 <?php $scripts[]='/js/index.js'; ?>
 
 <div class="starter-template">
@@ -44,4 +47,4 @@
 	</div>
 </div>
 
-<?php include("includes/footer.php") ?>
+<?php include(WEBROOT . "includes/footer.php") ?>

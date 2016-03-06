@@ -1,5 +1,6 @@
 <?php
-require_once("includes/bootstrap.php");
+define(WEBROOT, '../');
+require_once(WEBROOT . "includes/bootstrap.php");
 
 if ( !isset($_GET['bocety']) || !isset($_GET['secret']) || empty($_GET['bocety']) || empty($_GET['secret']) ){
 	header("Location: /");
@@ -21,7 +22,7 @@ if ( !$Bocety->validate_secret($_GET['secret']) ) {
 $scripts[] = "js/edit.js";
 $scripts[] = "js/twitter-text-1.12.0.min.js";
 
-include("includes/header.php");
+include(WEBROOT . "includes/header.php");
 
 ?>
 <div class="text-right pull-right" style="margin-top:18px;margin-bottom:0px;">
@@ -94,4 +95,4 @@ include("includes/header.php");
 	<input type="hidden" name="secret" value="<?php echo $Bocety->secret;?>"/>
 </form>
 
-<?php include("includes/footer.php") ?>
+<?php include(WEBROOT . "includes/footer.php") ?>

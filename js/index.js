@@ -49,7 +49,7 @@
 						buttons: {	main: {	label: "close",	className: "btn-primary" } }
 					});
 				} else {
-					window.location='/dashboard.php';
+					window.location='/home/dashboard.php';
 				}
 			});
 			
@@ -75,7 +75,7 @@
 						buttons: {	main: {	label: "close",	className: "btn-primary" } }
 					});
 				} else {
-					window.location='/dashboard.php';
+					window.location='/home/dashboard.php';
 				}
 			});
 			

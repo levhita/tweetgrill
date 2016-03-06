@@ -1,5 +1,8 @@
-<?php include("includes/bootstrap.php"); ?>
-<?php include("includes/header.php"); ?>
+<?php
+	define(WEBROOT, '../');
+	include(WEBROOT . "includes/bootstrap.php");
+	include(WEBROOT . "includes/header.php");
+?>
 
 <?php $scripts[]='/js/dashboard.js'; ?>
 
@@ -45,4 +48,4 @@
 
 
 
-<?php include("includes/footer.php") ?>
+<?php include(WEBROOT . "includes/footer.php") ?>

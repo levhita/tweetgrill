@@ -9,7 +9,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			method: "POST",
-			url: "/api/update_content.php",
+			url: "/home/api/update_content.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -33,7 +33,7 @@ $(document).ready(function(){
 		if (confirm("Do you really want to delete this content?")) {
 			$.ajax({
 				method: "POST",
-				url: "/api/delete.php",
+				url: "/home/api/delete.php",
 				data: data,
 				dataType: 'json'
 			}).done(function(response) {
@@ -88,7 +88,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			method: "POST",
-			url: "/api/update_bocety.php",
+			url: "/home/api/update_bocety.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -112,7 +112,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			method: "POST",
-			url: "/api/update_bocety.php",
+			url: "/home/api/update_bocety.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -152,7 +152,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			method: "POST",
-			url: "/api/update_bocety.php",
+			url: "/home/api/update_bocety.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {
@@ -187,7 +187,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			method: "POST",
-			url: "/api/add.php",
+			url: "/home/api/add.php",
 			data: data,
 			dataType: 'json'
 		}).done(function(response) {

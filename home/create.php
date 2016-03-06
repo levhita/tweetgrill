@@ -1,6 +1,6 @@
 <?php
-require_once("includes/bootstrap.php");
-require_once("models/Bocety.php");
+define(WEBROOT, '../');
+require_once(WEBROOT . "includes/bootstrap.php");
 
 $Bocety = new BocetyModel();
 
