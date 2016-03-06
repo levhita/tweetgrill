@@ -1,5 +1,5 @@
-<?php include("bootstrap.php"); ?>
-<?php include("header.php"); ?>
+<?php include("includes/bootstrap.php"); ?>
+<?php include("includes/header.php"); ?>
 
 <?php $scripts[]='/js/dashboard.js'; ?>
 
@@ -45,4 +45,4 @@
 
 
 
-<?php include("footer.php") ?>
+<?php include("includes/footer.php") ?>

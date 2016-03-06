@@ -38,7 +38,7 @@
 
 			$.ajax({
 				method: "POST",
-				url: "create_account.php",
+				url: "/api/create_account.php",
 				data: data,
 				dataType: 'json'
 			}).done(function(response) {
@@ -49,16 +49,39 @@
 						buttons: {	main: {	label: "close",	className: "btn-primary" } }
 					});
 				} else {
-					bootbox.dialog({
-						message: 'sdfsdfsdf',
-						title: "Success",
-						buttons: {	main: {	label: "Continue",	className: "btn-primary" } }
-					});
+					window.location='/dashboard.php';
 				}
 			});
 			
 			return false;
 		});
+
+		$('#login_button').click(function(){
+			var data = {
+				'email' :$('#email_login').val(),
+				'password' :$('#password_login').val()
+			}
+
+			$.ajax({
+				method: "POST",
+				url: "/api/login.php",
+				data: data,
+				dataType: 'json'
+			}).done(function(response) {
+				if(typeof response.error !== 'undefined'){
+					bootbox.dialog({
+						message: response.error,
+						title: "Error",
+						buttons: {	main: {	label: "close",	className: "btn-primary" } }
+					});
+				} else {
+					window.location='/dashboard.php';
+				}
+			});
+			
+			return false;
+		});
+
 	});
 
 	function checkEmail(){

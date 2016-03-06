@@ -1,6 +1,5 @@
 <?php
-require_once("bootstrap.php");
-require_once("models/Bocety.php");
+require_once("includes/bootstrap.php");
 
 if ( !isset($_GET['bocety']) || !isset($_GET['secret']) || empty($_GET['bocety']) || empty($_GET['secret']) ){
 	header("Location: /");
@@ -8,7 +7,7 @@ if ( !isset($_GET['bocety']) || !isset($_GET['secret']) || empty($_GET['bocety']
 }
 
 try {
-	$Bocety = new Bocety($_GET['bocety']);
+	$Bocety = new BocetyModel($_GET['bocety']);
 } catch (Exception $e) {
 	header("Location: /");
 	die();
@@ -22,7 +21,7 @@ if ( !$Bocety->validate_secret($_GET['secret']) ) {
 $scripts[] = "js/edit.js";
 $scripts[] = "js/twitter-text-1.12.0.min.js";
 
-include("header.php");
+include("includes/header.php");
 
 ?>
 <div class="text-right pull-right" style="margin-top:18px;margin-bottom:0px;">
@@ -95,4 +94,4 @@ include("header.php");
 	<input type="hidden" name="secret" value="<?php echo $Bocety->secret;?>"/>
 </form>
 
-<?php include("footer.php") ?>
+<?php include("includes/footer.php") ?>

@@ -1,5 +1,5 @@
-<?php include("bootstrap.php"); ?>
-<?php include("header_external.php"); ?>
+<?php include("includes/bootstrap.php"); ?>
+<?php include("includes/header_external.php"); ?>
 <?php $scripts[]='/js/index.js'; ?>
 
 <div class="starter-template">
@@ -44,39 +44,4 @@
 	</div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Start your <strong>Bocety</strong> now!</h4>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="form-group">
-						<label for="email">Email Address:</label>
-						<input type="email" class="form-control" id="email" placeholder="username@email.com">
-						<p class="help-block" id="email_error" style="display:none"></p>
-					</div>
-					<div class="form-group">
-						<label for="password">Password:</label>
-						<input type="password" class="form-control" id="password" placeholder="Something long and human readable works better.">
-						<p class="help-block" id="password_error" style="display:none"></p>
-					</div>
-					<div class="form-group">
-						<label for="password_repeat">Repeat Password:</label>
-						<input type="password" class="form-control" id="password_repeat" placeholder="Again, so you can be sure you type it right.">
-						<p class="help-block" id="password_repeat_error" style="display:none"></p>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button id="signup_button" type="button" class="btn btn-primary disabled">I'm Ready</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<?php include("footer.php") ?>
+<?php include("includes/footer.php") ?>

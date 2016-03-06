@@ -4,5 +4,9 @@
 			
 			$("#what_is_a_bocety_text").slideToggle();
 		});
+
+		$('#create_bocety').
 	});
+
+
 })();

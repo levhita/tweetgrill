@@ -1,6 +1,5 @@
 <?php
-require_once("bootstrap.php");
-require_once("models/Bocety.php");
+require_once("includes/bootstrap.php");
 
 if ( !isset($_GET['bocety']) || empty($_GET['bocety']) ){
 	header("Location: /");
@@ -8,7 +7,7 @@ if ( !isset($_GET['bocety']) || empty($_GET['bocety']) ){
 }
 
 try {
-	$Bocety = new Bocety($_GET['bocety']);
+	$Bocety = new BocetyModel($_GET['bocety']);
 } catch (Exception $e) {
 	header("Location: /");
 	die();
@@ -19,10 +18,10 @@ if($Bocety->published=='0'){
 	die();
 }
 
-$scripts[] = "js/view.js";
-$scripts[] = "js/twitter-text-1.12.0.min.js";
+$scripts[] = "/js/view.js";
+$scripts[] = "/js/twitter-text-1.12.0.min.js";
 
-include("header.php");
+include("includes/header.php");
 
 ?>
 
@@ -50,6 +49,4 @@ include("header.php");
 	<?php endforeach;?>
 </div>
 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e906de04dcb0610" async="async"></script>
-
-<?php include("footer.php") ?>
+<?php include("includes/footer.php") ?>
