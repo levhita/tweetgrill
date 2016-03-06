@@ -1,8 +1,9 @@
 <?php
-define(WEBROOT, '../');
+define("WEBROOT", '../');
 require_once(WEBROOT . "includes/bootstrap.php");
 
-$Bocety = new BocetyModel();
+$Bocety = new BocetyModel::create();
 
-header("Location: /edit.php?bocety={$Bocety->unique_id}&secret={$Bocety->secret}");
+header("Location: /edit.php?bocety={$Bocety->id_bocety}");
+
 die();

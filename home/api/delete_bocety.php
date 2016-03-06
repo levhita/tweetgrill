@@ -1,5 +1,5 @@
 <?php
-define(WEBROOT, '../../');
+define("WEBROOT", '../../');
 require_once(WEBROOT . "includes/bootstrap.php");
 
 if ( !isset($_GET['bocety']) || !isset($_GET['secret']) || empty($_GET['bocety']) || empty($_GET['secret'])){

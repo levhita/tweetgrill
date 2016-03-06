@@ -1,8 +1,10 @@
 <?php
-define(WEBROOT, '../../');
+define("WEBROOT", '../../');
 require_once(WEBROOT . "includes/bootstrap.php");
 
-$valid_fields= array('name', 'description', 'published');
+Utils::check_session();
+
+$valid_fields= array('name', 'description', 'published', 'on_review');
 
 foreach ($valid_fields as $field) {
 	if (isset($_POST[$field]) && $_POST[$field]!='' ) {
@@ -13,7 +15,7 @@ foreach ($valid_fields as $field) {
 	}
 }
 
-if ( $field == '' || !isset($_POST['bocety']) || !isset($_POST['secret']) || empty($_POST['bocety']) || empty($_POST['secret']) ){
+if ( $field == '' || !isset($_POST['bocety']) || empty($_POST['bocety']) ){
 	echo json_encode(array('error'=>'Missing Parameters'));
 	die();
 }
@@ -22,11 +24,6 @@ try {
 	$Bocety = new BocetyModel($_POST['bocety']);
 } catch (Exception $e) {
 	echo json_encode(array('error'=>'Bocety Not Found'));
-	die();
-}
-
-if (!$Bocety->validate_secret($_POST['secret'])) {
-	echo json_encode(array('error'=>'Invalid Secret'));
 	die();
 }
 

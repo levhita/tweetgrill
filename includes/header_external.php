@@ -47,7 +47,7 @@
             <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
           <?php else: ?>
             <li><?php echo $LoggedUser->email?></li>
-            <li><a href="/logout.php"><?php echo $LoggedUser->email?> Logout</a></li>
+            <li><a href="/home/logout.php">Logout</a></li>
           <?php endif;?>
         </ul>
       </div><!--/.nav-collapse -->
@@ -71,7 +71,7 @@
             </div>
             <div class="form-group">
               <label for="password_login">Password:</label>
-              <input type="password" class="form-control" id="password_login" placeholder="******">
+              <input type="password" class="form-control" id="password_login" placeholder="correct horse baterry staple">
               <p class="help-block" id="password_error_login" style="display:none"></p>
             </div>
           </form>

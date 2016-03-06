@@ -1,5 +1,5 @@
 <?php
-	define(WEBROOT, '../');
+	define("WEBROOT", '../');
 	include(WEBROOT . "includes/bootstrap.php");
 	include(WEBROOT . "includes/header.php");
 ?>
@@ -13,7 +13,7 @@
 <div id="bocetys">
 	
 	<h4 class="text-center">You still don't have any <strong>Bocety</strong></h4>
-	<p class="text-center"><a  class="btn btn-primary btn-lg" href='#'>Start one Now!</a></p>
+	<p class="text-center"><a  class="btn btn-primary btn-lg" href='/home/create_bocety.php'>Start one Now!</a></p>
 	
 
 	

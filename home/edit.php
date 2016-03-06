@@ -1,8 +1,10 @@
 <?php
-define(WEBROOT, '../');
+define("WEBROOT", '../');
 require_once(WEBROOT . "includes/bootstrap.php");
 
-if ( !isset($_GET['bocety']) || !isset($_GET['secret']) || empty($_GET['bocety']) || empty($_GET['secret']) ){
+Utils::check_session();
+
+if ( !isset($_GET['bocety']) || empty($_GET['bocety']) ){
 	header("Location: /");
 	die();
 }
@@ -14,13 +16,13 @@ try {
 	die();
 } 
 
-if ( !$Bocety->validate_secret($_GET['secret']) ) {
+/*if ( !$Bocety->validate_secret($_GET['secret']) ) {
 	header("Location: /");
 	die();
-}
+}*/
 
-$scripts[] = "js/edit.js";
-$scripts[] = "js/twitter-text-1.12.0.min.js";
+$scripts[] = "/js/edit.js";
+$scripts[] = "/vendor/twitter-text-1.12.0.min.js";
 
 include(WEBROOT . "includes/header.php");
 
@@ -38,7 +40,7 @@ include(WEBROOT . "includes/header.php");
 		</ul>
 	</div>	
 	<a href="#" id="toggle_published" class="btn <?php echo ($Bocety->published=='0')?'btn-primary':'btn-default';?>"><?php echo ($Bocety->published=='0')?'Publish':'Unpublish';?></a>
-	<a id="public_link" target="_blank" href="view.php?bocety=<?php echo $Bocety->unique_id;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
+	<a id="public_link" target="_blank" href="view.php?bocety=<?php echo $Bocety->id_bocety;?>" class="btn btn-primary">Public Link &nbsp;<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
 </div>
 <div class="clearfix visible-xs"></div>
 <h2 class="text-left" id="name"><?php echo htmlspecialchars($Bocety->name)?></h2>
@@ -51,22 +53,21 @@ include(WEBROOT . "includes/header.php");
 		<form id="new_tweet">
 			<div class="form-group">
 				<label for="tweet">Create a new Content:</label>
-				<p><textarea name="text" class="form-control" rows="2" placeholder="Follow @levhita for some awesome updates #FF"></textarea></p>
+				<p><textarea name="text" class="form-control" rows="2" placeholder="Write some awesome content..."></textarea></p>
 				<p class="pull-right">
 					<span class="counter text-muted">140</span>&nbsp;
 					<button type="button" class="add btn btn-primary">Save</button>
 				</p>
-				<input type="hidden" name="bocety" value="<?php echo $Bocety->unique_id;?>"/>
-				<input type="hidden" name="secret" value="<?php echo $Bocety->secret;?>"/>
+				<input type="hidden" name="bocety" value="<?php echo $Bocety->id_content;?>"/>
 			</div>
 		</form>
 	</div>
 </div>
 <hr/>
-<div id="tweets" class="row">
-	<?php foreach($Bocety->tweets as $Content): ?>
+<div id="contents" class="row">
+	<?php foreach($Bocety->contents as $Content): ?>
 		
-		<form id="tweet_<?php echo $Content->id_tweet; ?>">
+		<form id="tweet_<?php echo $Content->id_content; ?>">
 			<div class="col-sm-12">
 				<div class="form-group">
 					<p><textarea name="text" class="form-control" rows="3"><?php echo htmlspecialchars($Content->text)?></textarea></p>
@@ -78,9 +79,8 @@ include(WEBROOT . "includes/header.php");
 
 					</p>
 					<input type="hidden" name="original_text" value="<?php echo htmlspecialchars($Content->text)?>"/>
-					<input type="hidden" name="bocety" value="<?php echo $Bocety->unique_id;?>"/>
-					<input type="hidden" name="secret" value="<?php echo $Bocety->secret;?>"/>
-					<input type="hidden" name="id_tweet" value="<?php echo $Content->id_tweet;?>"/>
+					<input type="hidden" name="bocety" value="<?php echo $Bocety->id_bocety;?>"/>
+					<input type="hidden" name="id_content" value="<?php echo $Content->id_content;?>"/>
 				</div>
 				<div class="clearfix"></div>
 				<br>
@@ -91,8 +91,7 @@ include(WEBROOT . "includes/header.php");
 
 
 <form id="bocety_form">
-	<input type="hidden" name="bocety" value="<?php echo $Bocety->unique_id;?>"/>
-	<input type="hidden" name="secret" value="<?php echo $Bocety->secret;?>"/>
+	<input type="hidden" name="bocety" value="<?php echo $Bocety->id_bocety;?>"/>
 </form>
 
 <?php include(WEBROOT . "includes/footer.php") ?>

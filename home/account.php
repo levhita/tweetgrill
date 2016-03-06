@@ -1,5 +1,5 @@
 <?php
-	define(WEBROOT, '../../');
+	define("WEBROOT", '../../');
 	include(WEBROOT . "includes/bootstrap.php");
 	include(WEBROOT . "includes/header.php");
 ?>

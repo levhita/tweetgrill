@@ -23,7 +23,7 @@ class Autoloader {
     /** Selects the correct folder from the ClassName **/
     foreach ( $named_directories AS $name => $directory ) {
       if ( stristr( $class_name, $name ) && $class_name != $name ) {
-        require_once  $directory . $class_name. '.php';
+        require_once  WEBROOT. $directory . $class_name. '.php';
         return true;
       }
     }
@@ -36,7 +36,7 @@ class Autoloader {
    *
    * This is designed to play nice with other autoloaders.
    */
-  public static function registerAutoload()
+  public static function register_autoload()
   {
     spl_autoload_register(array('Autoloader', 'autoload'));
   }

@@ -2,42 +2,44 @@
 
 class BocetyModel {
 	
-	public $id_bocety = 0;
-	public $unique_id = '';
-	public $name = 'New Bocety';
+	public $id_bocety 	= 0;
+	public $id_user 	= 0;
+	public $name 		= 'New Bocety';
 	public $description = '';
-	public $secret = '';
-	public $published = true;
-	public $contents = array();
+	public $published 	= false;
+	public $published_secret = '';
+	public $on_review 	= false;
+	public $on_review_secret = '';
+	public $contents 	= array();
 
-	public function __construct($unique_id=''){
+	public function __construct($id_bocety){
 		global $Db;
-		if (empty($unique_id)) {
-			do {
-				$this->unique_id = $this->create_unique_id();
-				$Result = $Db->query("SELECT * FROM bocety where unique_id='{$this->unique_id}' LIMIT 1");
-			} while($Result->fetchColumn() > 0);
-			$this->secret = $this->create_secret();
-			$query = $Db->prepare("INSERT INTO bocety(name, unique_id, secret) VALUES(:name, :unique_id, :secret);");
-			$query->execute(array(
-				':name' 	 => $this->name,
-				':unique_id' => $this->unique_id,
-				':secret' 	 => $this->secret
-			));
-			$this->id_bocety = $Db->lastInsertId();
-		} else { 
-			$query = $Db->query("SELECT * FROM bocety where unique_id='{$unique_id}' LIMIT 1");
-			if (!$Bocety = $query->fetch(PDO::FETCH_OBJ)) {
-				throw new InvalidArgumentException("These are not the droid's you are looking for.");
-			}
-			$this->id_bocety = $Bocety->id_bocety;
-			$this->name = $Bocety->name;
-			$this->description = $Bocety->description;
-			$this->unique_id = $Bocety->unique_id;
-			$this->secret = $Bocety->secret;
-			$this->published = ($Bocety->published=='1');
-			$this->load_contents();
+		$query = $Db->query("SELECT * FROM bocety where id_bocety='{$id_bocety}' LIMIT 1");
+		if (!$Bocety = $query->fetch(PDO::FETCH_OBJ)) {
+			throw new InvalidArgumentException("These are not the droid's you are looking for.");
 		}
+		$this->id_bocety = $Bocety->id_bocety;
+		$this->id_user = $Bocety->id_user;
+		$this->name = $Bocety->name;
+		$this->description = $Bocety->description;
+		$this->on_review = $Bocety->on_review;
+		$this->on_secret= $Bocety->on_review_secret;
+		$this->published = $Bocety->published;
+		$this->published_secret= $Bocety->published_secret;
+		#$this->load_contents();
+	}
+	
+	public static function create($id_user){
+		global $Db;
+		$query = $Db->prepare("INSERT INTO bocety(name, id_user) VALUES(:name, :id_user);");
+		$query->execute(array(
+			':name' 	 => 'New Bocety',
+			':id_user' => $id_user
+		));
+		
+		$id_bocety = $Db->lastInsertId();
+		
+		return new BocetyModel($id_bocety);
 	}
 	
 	private function load_contents() {

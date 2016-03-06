@@ -1,5 +1,5 @@
 <?php
-define(WEBROOT, '../');
+define("WEBROOT", '../');
 require_once(WEBROOT . "includes/bootstrap.php");
 
 if ( !isset($_POST['email'])|| !isset($_POST['password']) || empty($_POST['email'])||empty($_POST['password']) ){
