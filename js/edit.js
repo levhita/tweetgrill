@@ -1,10 +1,10 @@
 $(document).ready(function(){
+
 	$('#contents').delegate('button.update', 'click', function(){
 		var form = $(this).closest('form');
 		var data ={
 			'text' : $(form).find('textarea[name="text"]').val(),
-			'bocety' : $(form).find('input[name="bocety"]').val(),
-			'secret' : $(form).find('input[name="secret"]').val(),
+			'id_bocety' : $(form).find('input[name="id_bocety"]').val(),
 			'id_content' : $(form).find('input[name="id_content"]').val(),
 		}
 		$.ajax({
@@ -25,8 +25,7 @@ $(document).ready(function(){
 	$('#contents').delegate('button.delete', 'click', function(){
 		var form = $(this).closest('form');
 		var data ={
-			'bocety' : $(form).find('input[name="bocety"]').val(),
-			'secret' : $(form).find('input[name="secret"]').val(),
+			'id_bocety' : $(form).find('input[name="id_bocety"]').val(),
 			'id_content' : $(form).find('input[name="id_content"]').val(),
 		}
 
@@ -83,7 +82,7 @@ $(document).ready(function(){
 		var form = $("#bocety_form");
 		var data ={
 			'name' : new_name,
-			'bocety' : $(form).find('input[name="bocety"]').val(),
+			'id_bocety' : $(form).find('input[name="id_bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
 		}
 		$.ajax({
@@ -107,8 +106,7 @@ $(document).ready(function(){
 		var form = $("#bocety_form");
 		var data ={
 			'published' : new_published,
-			'bocety' : $(form).find('input[name="bocety"]').val(),
-			'secret' : $(form).find('input[name="secret"]').val(),
+			'id_bocety' : $(form).find('input[name="id_bocety"]').val(),
 		}
 		$.ajax({
 			method: "POST",
@@ -147,7 +145,7 @@ $(document).ready(function(){
 		var form = $("#bocety_form");
 		var data ={
 			'description' : new_description,
-			'bocety' : $(form).find('input[name="bocety"]').val(),
+			'id_bocety' : $(form).find('input[name="id_bocety"]').val(),
 			'secret' : $(form).find('input[name="secret"]').val(),
 		}
 		$.ajax({
@@ -167,9 +165,8 @@ $(document).ready(function(){
 	$('#delete_bocety').on('click', function() {
 		if (confirm("Do you really want to delete this bocety?")) {
 			var form = $("#bocety_form");
-			var bocety 	= $(form).find('input[name="bocety"]').val();
-			var secret = $(form).find('input[name="secret"]').val();
-			window.location = 'delete_bocety.php?bocety='+bocety+'&secret='+secret;
+			var id_bocety 	= $(form).find('input[name="id_bocety"]').val();
+			window.location = 'delete_bocety.php?id_bocety='+id_bocety;
 		}
 		return false;
 	});
@@ -182,8 +179,7 @@ $(document).ready(function(){
 		var form = $(this).closest('form');
 		var data ={
 			'text' : $(form).find('textarea[name="text"]').val(),
-			'bocety' : $(form).find('input[name="bocety"]').val(),
-			'secret' : $(form).find('input[name="secret"]').val(),
+			'id_bocety' : $(form).find('input[name="id_bocety"]').val()
 		}
 		$.ajax({
 			method: "POST",
@@ -207,8 +203,7 @@ $(document).ready(function(){
 				new_content += '			<button type="button" style="display:none" class="update btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>';
 				new_content += '		</p>';
 				new_content += '<input type="hidden" name="original_text" value="'+content.text+'"/>';
-				new_content += '		<input type="hidden" name="bocety" value="'+content.unique_id+'"/>';
-				new_content += '		<input type="hidden" name="secret" value="'+content.secret+'"/>';
+				new_content += '		<input type="hidden" name="id_bocety" value="'+content.id_bocety+'"/>';
 				new_content += '		<input type="hidden" name="id_content" value="'+content.id_content+'"/>';
 				new_content += '	</div>';
 				new_content += '<div class="clearfix"></div>';
@@ -234,7 +229,7 @@ $(document).ready(function(){
 
 function update_counter(element) {
 	var text =  $(element).val();
-	var left = 140 - twttr.txt.getContentLength(text);
+	var left = 140 - twttr.txt.getUnicodeTextLength(text);
 
 	if(left < 15){
 		$(element).closest('.form-group').find('.counter').addClass('text-danger');

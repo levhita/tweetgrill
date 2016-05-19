@@ -21,8 +21,8 @@ try {
 	die();
 }*/
 
-$scripts[] = "/js/edit.js";
 $scripts[] = "/vendor/twitter-text-1.12.0.min.js";
+$scripts[] = "/js/edit.js";
 
 include(WEBROOT . "includes/header.php");
 
@@ -50,15 +50,15 @@ include(WEBROOT . "includes/header.php");
 <hr/>
 <div class="row">
 	<div class="col-sm-12">
-		<form id="new_tweet">
+		<form id="new_content">
 			<div class="form-group">
-				<label for="tweet">Create a new Content:</label>
+				<label for="content">Create a new Content:</label>
 				<p><textarea name="text" class="form-control" rows="2" placeholder="Write some awesome content..."></textarea></p>
 				<p class="pull-right">
 					<span class="counter text-muted">140</span>&nbsp;
 					<button type="button" class="add btn btn-primary">Save</button>
 				</p>
-				<input type="hidden" name="bocety" value="<?php echo $Bocety->id_content;?>"/>
+				<input type="hidden" name="id_bocety" value="<?php echo $Bocety->id_bocety;?>"/>
 			</div>
 		</form>
 	</div>
@@ -67,19 +67,19 @@ include(WEBROOT . "includes/header.php");
 <div id="contents" class="row">
 	<?php foreach($Bocety->contents as $Content): ?>
 		
-		<form id="tweet_<?php echo $Content->id_content; ?>">
+		<form id="content_<?php echo $Content->id_content; ?>">
 			<div class="col-sm-12">
 				<div class="form-group">
 					<p><textarea name="text" class="form-control" rows="3"><?php echo htmlspecialchars($Content->text)?></textarea></p>
 					<p class="pull-right">
 						<span class="counter text-muted">140</span>&nbsp;
 						<button type="button" class="delete btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-						<button type="button" class="tweet btn btn-default">Content</button>
+						<button type="button" class="content btn btn-default">Content</button>
 						<button type="button" style="display:none" class="update btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 
 					</p>
 					<input type="hidden" name="original_text" value="<?php echo htmlspecialchars($Content->text)?>"/>
-					<input type="hidden" name="bocety" value="<?php echo $Bocety->id_bocety;?>"/>
+					<input type="hidden" name="id_bocety" value="<?php echo $Bocety->id_bocety;?>"/>
 					<input type="hidden" name="id_content" value="<?php echo $Content->id_content;?>"/>
 				</div>
 				<div class="clearfix"></div>
@@ -91,7 +91,7 @@ include(WEBROOT . "includes/header.php");
 
 
 <form id="bocety_form">
-	<input type="hidden" name="bocety" value="<?php echo $Bocety->id_bocety;?>"/>
+	<input type="hidden" name="id_bocety" value="<?php echo $Bocety->id_bocety;?>"/>
 </form>
 
 <?php include(WEBROOT . "includes/footer.php") ?>

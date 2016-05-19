@@ -26,7 +26,7 @@ class BocetyModel {
 		$this->on_secret= $Bocety->on_review_secret;
 		$this->published = $Bocety->published;
 		$this->published_secret= $Bocety->published_secret;
-		#$this->load_contents();
+		$this->load_contents();
 	}
 	
 	public static function create($id_user){
@@ -76,16 +76,17 @@ class BocetyModel {
 	/** @todo add error detection **/
 	public function add_content($text) {
 		global $Db;
-		$query = $Db->prepare("INSERT INTO content(text, id_bocety) VALUES(:text, :id_bocety)");
+		$query = $Db->prepare("INSERT INTO content(text, id_bocety, id_social_account) VALUES(:text, :id_bocety, :id_social_account)");
 		$query->execute(array(
 			':text' 	=> $text,
 			':id_bocety'	=> $this->id_bocety,
+			':id_social_account' => 1,
 		));
 		$Content = (object) array(
 			'id_content' => $Db->lastInsertId(),
 			'text' => $text,
-			'unique_id' => $this->unique_id,
-			'secret' => $this->secret,
+			'id_bocety' => $this->id_bocety,
+			'id_social_account' => 1
 		);
 		return $Content;
 	}
